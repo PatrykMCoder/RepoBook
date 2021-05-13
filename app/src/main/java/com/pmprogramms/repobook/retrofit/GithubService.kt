@@ -5,9 +5,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface GithubService {
-    @GET("/")
-    fun getGithubHome() : Call<Void>
-
     @GET("/repositories")
-    fun getAllRepo() : Call<List<Github>>
+    fun getAllRepositories() : Call<List<Github>>
 }

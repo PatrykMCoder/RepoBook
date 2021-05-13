@@ -1,9 +1,7 @@
 package com.pmprogramms.repobook.repository
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.google.gson.GsonBuilder
 import com.pmprogramms.repobook.model.Github
 import com.pmprogramms.repobook.retrofit.GithubService
 import retrofit2.Call
@@ -21,39 +19,24 @@ class GithubRepository {
         .build()
         .create(GithubService::class.java)
 
-    private lateinit var allRepo: MutableLiveData<List<Github>>
+    private lateinit var allRepositories: MutableLiveData<List<Github>>
 
-    fun getGithubHome() {
-        githubService.getGithubHome().enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if (response.isSuccessful) {
+    fun getAllRepositories(): MutableLiveData<List<Github>> {
+        allRepositories = MutableLiveData()
 
-                }
-            }
-
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-
-            }
-
-        })
-    }
-
-    fun getAllRepo(): MutableLiveData<List<Github>> {
-        allRepo = MutableLiveData()
-
-        githubService.getAllRepo().enqueue(object : Callback<List<Github>> {
+        githubService.getAllRepositories().enqueue(object : Callback<List<Github>> {
             override fun onResponse(call: Call<List<Github>>, response: Response<List<Github>>) {
                 Log.d("GithubFragmentRepo", "onResponse: ${response.body()}")
-                allRepo.postValue(response.body())
+                allRepositories.postValue(response.body())
             }
 
             override fun onFailure(call: Call<List<Github>>, t: Throwable) {
                 Log.d("GithubFragmentRepo", "onResponse err: ${t.message}")
-                allRepo.postValue(null)
+                allRepositories.postValue(null)
             }
 
         })
 
-        return allRepo
+        return allRepositories
     }
 }

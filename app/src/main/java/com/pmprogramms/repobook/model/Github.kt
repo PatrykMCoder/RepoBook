@@ -6,14 +6,16 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 class Github(
-    var name: String,
+    @SerializedName("name")
+    var repositoryTitle: String,
     var description: String,
     var owner: Owner
 ): Parcelable {
 
     @Parcelize
     class Owner(
-        var login: String,
+        @SerializedName("login")
+        var username: String,
         @SerializedName("avatar_url")
         var avatarURL: String
     ): Parcelable

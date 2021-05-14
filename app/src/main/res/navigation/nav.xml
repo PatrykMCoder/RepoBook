@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_to_githubRepositoryDetailsFragment"
             app:destination="@id/githubRepositoryDetailsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_bitbucketRepositoryDetailsFragment"
+            app:destination="@id/bitbucketRepositoryDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/githubRepositoryDetailsFragment"
@@ -22,5 +25,14 @@
         <argument
             android:name="github"
             app:argType="com.pmprogramms.repobook.model.Github" />
+    </fragment>
+    <fragment
+        android:id="@+id/bitbucketRepositoryDetailsFragment"
+        android:name="com.pmprogramms.repobook.view.BitbucketRepositoryDetailsFragment"
+        android:label="fragment_bitbucket_repository_details"
+        tools:layout="@layout/fragment_bitbucket_repository_details" >
+        <argument
+            android:name="bitbuckerValue"
+            app:argType="com.pmprogramms.repobook.model.Bitbucket$Value" />
     </fragment>
 </navigation>

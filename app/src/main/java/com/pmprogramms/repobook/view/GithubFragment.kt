@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pmprogramms.repobook.adapters.GithubRecyclerAdapter
 import com.pmprogramms.repobook.databinding.FragmentGithubBinding
-import com.pmprogramms.repobook.viewmodel.GithubViewModel
+import com.pmprogramms.repobook.viewmodel.RepositoriesViewModel
 
 class GithubFragment : Fragment() {
     override fun onCreateView(
@@ -20,11 +20,11 @@ class GithubFragment : Fragment() {
         val recyclerView = binding.recyclerView
         val recyclerAdapter = GithubRecyclerAdapter()
 
-        val githubViewModel = ViewModelProvider(this).get(GithubViewModel::class.java)
+        val viewModel = ViewModelProvider(this).get(RepositoriesViewModel::class.java)
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        githubViewModel.getAllRepositories().observe(viewLifecycleOwner, {
+        viewModel.getAllGithubRepositories().observe(viewLifecycleOwner, {
             if (it != null) {
                 recyclerAdapter.setData(it)
                 recyclerView.adapter = recyclerAdapter

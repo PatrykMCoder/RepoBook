@@ -1,6 +1,7 @@
 package com.pmprogramms.repobook.model
 
 import android.os.Parcelable
+import android.provider.ContactsContract
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
@@ -17,9 +18,15 @@ class Bitbucket(
 
     @Parcelize
     class Owner(
-        @SerializedName("display_name")
-        var displayName: String
-    ) : Parcelable
+        var nickname: String,
+        var username: String
+    ) : Parcelable {
+        fun getName() : String {
+            if (nickname == null) // @nickname is not always != null.
+                return username
+            return nickname
+        }
+    }
 
     @Parcelize
     class Links(

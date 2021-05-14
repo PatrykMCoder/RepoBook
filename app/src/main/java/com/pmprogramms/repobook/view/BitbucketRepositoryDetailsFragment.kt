@@ -26,7 +26,7 @@ class BitbucketRepositoryDetailsFragment : Fragment() {
 
         bitbucketValue = args.bitbuckerValue
 
-        usernameTV.text = requireContext().getString(R.string.username, bitbucketValue.owner.displayName)
+        usernameTV.text = requireContext().getString(R.string.username, bitbucketValue.owner.getName())
         repositoryTitleTV.text = requireContext().getString(R.string.repository_title, bitbucketValue.name)
         descriptionTV.text = requireContext().getString(R.string.description, bitbucketValue.description)
 

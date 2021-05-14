@@ -30,7 +30,7 @@ class BitbucketRecyclerAdapter : RecyclerView.Adapter<BitbucketRecyclerAdapter.V
         val currentItem = bitbucketRepository.values[position]
 
         holder.nameRepository.text = holder.itemView.context.getString(R.string.repository_title, currentItem.name)
-        holder.username.text = holder.itemView.context.getString(R.string.username, currentItem.owner.displayName)
+        holder.username.text = holder.itemView.context.getString(R.string.username, currentItem.owner.getName())
         holder.container.setOnClickListener {
             val action = MainFragmentDirections.actionMainFragmentToBitbucketRepositoryDetailsFragment(
                 currentItem

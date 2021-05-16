@@ -48,7 +48,8 @@ class GithubFragment : Fragment() {
                 recyclerAdapter?.setData(it)
                 recyclerView?.adapter = recyclerAdapter
             } else {
-//                todo -> handle error
+                val somethingWrongDialog = SomethingWrongDialog()
+                somethingWrongDialog.show(childFragmentManager, "SomethingWrong")
             }
         })
     }

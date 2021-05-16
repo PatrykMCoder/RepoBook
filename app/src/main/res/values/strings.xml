@@ -4,5 +4,7 @@
     <string name="repository_title">Title: %1$s</string>
     <string name="username">Username: %1$s</string>
     <string name="description">Description: %1$s</string>
+    <string name="something_wrong_title">Something wrong</string>
+    <string name="something_wrong_message">Please check your internet connection or try again…</string>
 
 </resources>

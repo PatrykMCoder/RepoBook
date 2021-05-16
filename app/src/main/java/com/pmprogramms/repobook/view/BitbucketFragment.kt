@@ -49,6 +49,9 @@ class BitbucketFragment : Fragment() {
             if (it != null) {
                 recyclerAdapter?.setData(it)
                 recyclerView?.adapter = recyclerAdapter
+            } else {
+                val somethingWrongDialog = SomethingWrongDialog()
+                somethingWrongDialog.show(childFragmentManager, "SomethingWrong")
             }
         })
     }

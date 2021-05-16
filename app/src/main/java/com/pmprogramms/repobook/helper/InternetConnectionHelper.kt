@@ -2,8 +2,6 @@ package com.pmprogramms.repobook.helper
 
 import android.content.Context
 import android.net.ConnectivityManager
-import androidx.core.content.ContextCompat.getSystemService
-
 
 class InternetConnectionHelper {
     fun checkInternetConnection(context: Context): Boolean {

@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pmprogramms.repobook.adapters.BitbucketRecyclerAdapter
-import com.pmprogramms.repobook.adapters.GithubRecyclerAdapter
 import com.pmprogramms.repobook.databinding.FragmentBitbucketBinding
 import com.pmprogramms.repobook.viewmodel.RepositoriesViewModel
 

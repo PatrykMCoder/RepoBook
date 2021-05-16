@@ -14,7 +14,6 @@ import java.util.*
 import java.util.stream.Collectors
 import java.util.stream.Stream
 
-
 class Repository {
     private val GITHUB_URL = "https://api.github.com"
     private val BITBUCKET_URL = "https://api.bitbucket.org/"

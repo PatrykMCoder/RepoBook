@@ -12,7 +12,6 @@ import com.pmprogramms.repobook.R
 import com.pmprogramms.repobook.databinding.FragmentBitbucketRepositoryDetailsBinding
 import com.pmprogramms.repobook.model.Bitbucket
 
-
 class BitbucketRepositoryDetailsFragment : Fragment() {
     private val args by navArgs<BitbucketRepositoryDetailsFragmentArgs>()
     private lateinit var bitbucketValue: Bitbucket.Value
@@ -29,9 +28,12 @@ class BitbucketRepositoryDetailsFragment : Fragment() {
 
         bitbucketValue = args.bitbuckerValue
 
-        usernameTV.text = requireContext().getString(R.string.username, bitbucketValue.owner.getName())
-        repositoryTitleTV.text = requireContext().getString(R.string.repository_title, bitbucketValue.name)
-        descriptionTV.text = requireContext().getString(R.string.description, bitbucketValue.description)
+        usernameTV.text =
+            requireContext().getString(R.string.username, bitbucketValue.owner.getName())
+        repositoryTitleTV.text =
+            requireContext().getString(R.string.repository_title, bitbucketValue.name)
+        descriptionTV.text =
+            requireContext().getString(R.string.description, bitbucketValue.description)
 
         Glide.with(this)
             .load(bitbucketValue.owner.links.avatar.avatarURL)

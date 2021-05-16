@@ -10,11 +10,11 @@ import com.pmprogramms.repobook.repository.Repository
 class RepositoriesViewModel(application: Application) : AndroidViewModel(application) {
     private var repository: Repository = Repository()
 
-    fun getAllGithubRepositories() : MutableLiveData<List<Github>> {
-        return repository.getAllGithubRepositories()
+    fun getAllGithubRepositories(sorted: Boolean) : MutableLiveData<List<Github>> {
+        return repository.getAllGithubRepositories(sorted)
     }
 
-    fun getAllBitbucketRepositories() : MutableLiveData<Bitbucket> {
-        return repository.getAllBitbucketRepositories()
+    fun getAllBitbucketRepositories(sorted: Boolean) : MutableLiveData<Bitbucket> {
+        return repository.getAllBitbucketRepositories(sorted)
     }
 }

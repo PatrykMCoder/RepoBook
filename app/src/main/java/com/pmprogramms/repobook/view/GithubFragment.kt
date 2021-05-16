@@ -5,35 +5,51 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.pmprogramms.repobook.adapters.GithubRecyclerAdapter
 import com.pmprogramms.repobook.databinding.FragmentGithubBinding
 import com.pmprogramms.repobook.viewmodel.RepositoriesViewModel
 
 class GithubFragment : Fragment() {
+    private var recyclerView: RecyclerView? = null
+    private var recyclerAdapter: GithubRecyclerAdapter? = null
+    private var viewModel: RepositoriesViewModel? = null
+    private var sorted = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentGithubBinding.inflate(layoutInflater)
-        val recyclerView = binding.recyclerView
-        val recyclerAdapter = GithubRecyclerAdapter()
+        recyclerView = binding.recyclerView
+        recyclerAdapter = GithubRecyclerAdapter()
+        viewModel = ViewModelProvider(this).get(RepositoriesViewModel::class.java)
 
-        val viewModel = ViewModelProvider(this).get(RepositoriesViewModel::class.java)
+        recyclerView!!.layoutManager = LinearLayoutManager(requireContext())
 
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        getDataRepositories(sorted)
 
-        viewModel.getAllGithubRepositories().observe(viewLifecycleOwner, {
+        binding.sortResult.setOnClickListener {
+            Toast.makeText(requireContext(), "Sorting...", Toast.LENGTH_SHORT).show()
+            sorted = sorted.not()
+
+            getDataRepositories(sorted)
+        }
+
+        return binding.root
+    }
+
+    private fun getDataRepositories(sorted: Boolean) {
+        viewModel!!.getAllGithubRepositories(sorted).observe(viewLifecycleOwner, {
             if (it != null) {
-                recyclerAdapter.setData(it)
-                recyclerView.adapter = recyclerAdapter
-            }
-            else {
+                recyclerAdapter?.setData(it)
+                recyclerView?.adapter = recyclerAdapter
+            } else {
 //                todo -> handle error
             }
         })
-
-        return binding.root
     }
 }

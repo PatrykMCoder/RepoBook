@@ -8,6 +8,11 @@ import kotlinx.parcelize.Parcelize
 class Bitbucket(
     var values: List<Value>
 ) : Parcelable {
+
+    fun setValuesData(values: List<Value>) {
+        this.values = values
+    }
+
     @Parcelize
     class Value(
         var owner: Owner,

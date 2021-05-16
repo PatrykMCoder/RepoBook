@@ -3,10 +3,12 @@ package com.pmprogramms.repobook.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.pmprogramms.repobook.R
 import com.pmprogramms.repobook.model.Bitbucket
 import com.pmprogramms.repobook.view.MainFragmentDirections
@@ -17,6 +19,7 @@ class BitbucketRecyclerAdapter : RecyclerView.Adapter<BitbucketRecyclerAdapter.V
         val nameRepository: TextView = itemView.findViewById(R.id.title_repository)
         val username: TextView = itemView.findViewById(R.id.username)
         val container: ConstraintLayout = itemView.findViewById(R.id.container)
+        val imageProfile: ImageView = itemView.findViewById(R.id.user_avatar)
     }
 
     private lateinit var bitbucketRepository: Bitbucket
@@ -38,6 +41,12 @@ class BitbucketRecyclerAdapter : RecyclerView.Adapter<BitbucketRecyclerAdapter.V
 
             holder.itemView.findNavController().navigate(action)
         }
+
+        Glide.with(holder.itemView)
+            .load(currentItem.owner.links.avatar.avatarURL)
+            .centerCrop()
+            .placeholder(R.drawable.ic_baseline_person_24)
+            .into(holder.imageProfile)
     }
 
     override fun getItemCount(): Int {

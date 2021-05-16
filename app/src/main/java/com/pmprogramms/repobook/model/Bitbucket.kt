@@ -1,7 +1,6 @@
 package com.pmprogramms.repobook.model
 
 import android.os.Parcelable
-import android.provider.ContactsContract
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
@@ -19,9 +18,11 @@ class Bitbucket(
     @Parcelize
     class Owner(
         var nickname: String,
-        var username: String
+        var username: String,
+        var links: Links
+
     ) : Parcelable {
-        fun getName() : String {
+        fun getName(): String {
             if (nickname == null) // @nickname is not always != null.
                 return username
             return nickname
@@ -35,6 +36,7 @@ class Bitbucket(
 
     @Parcelize
     class Avatar(
-        var href: String
+        @SerializedName("href")
+        var avatarURL: String
     ) : Parcelable
 }

@@ -1,6 +1,5 @@
 package com.pmprogramms.repobook.repository
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.pmprogramms.repobook.model.Bitbucket
 import com.pmprogramms.repobook.model.Github

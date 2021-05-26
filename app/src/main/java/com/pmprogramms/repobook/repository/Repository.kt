@@ -1,8 +1,10 @@
 package com.pmprogramms.repobook.repository
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.pmprogramms.repobook.model.Bitbucket
 import com.pmprogramms.repobook.model.Github
+import com.pmprogramms.repobook.model.GithubSearch
 import com.pmprogramms.repobook.retrofit.BitbucketService
 import com.pmprogramms.repobook.retrofit.GithubService
 import retrofit2.Call
@@ -32,6 +34,7 @@ class Repository {
 
     private lateinit var allGithubRepositories: MutableLiveData<List<Github>>
     private lateinit var allBitbucketRepositories: MutableLiveData<Bitbucket>
+    private lateinit var searchedGithubRepository: MutableLiveData<GithubSearch>
 
     fun getAllGithubRepositories(sorted: Boolean): MutableLiveData<List<Github>> {
         allGithubRepositories = MutableLiveData()
@@ -58,6 +61,28 @@ class Repository {
         })
 
         return allGithubRepositories
+    }
+
+    fun getGithubRepositoriesSearch(searchKey: String): MutableLiveData<GithubSearch> {
+        searchedGithubRepository = MutableLiveData()
+
+        githubService.getGithubRepositoriesSearch(searchKey).enqueue(object : Callback<GithubSearch>{
+            override fun onResponse(call: Call<GithubSearch>, response: Response<GithubSearch>) {
+                Log.d("SearchGithubFragment", "onResponse: $response")
+                if(response.isSuccessful) {
+                    searchedGithubRepository.postValue(response.body())
+                } else
+                    searchedGithubRepository.postValue(null)
+            }
+
+            override fun onFailure(call: Call<GithubSearch>, t: Throwable) {
+                Log.d("SearchGithubFragment", "onFailure: ${t.message}")
+                searchedGithubRepository.postValue(null)
+            }
+
+        })
+
+        return searchedGithubRepository
     }
 
     fun getAllBitbucketRepositories(sorted: Boolean): MutableLiveData<Bitbucket> {

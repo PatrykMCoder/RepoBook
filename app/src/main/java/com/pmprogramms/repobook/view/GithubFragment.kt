@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.pmprogramms.repobook.R
 import com.pmprogramms.repobook.adapters.GithubRecyclerAdapter
 import com.pmprogramms.repobook.databinding.FragmentGithubBinding
 import com.pmprogramms.repobook.viewmodel.RepositoriesViewModel
@@ -37,6 +39,10 @@ class GithubFragment : Fragment() {
             sorted = sorted.not()
 
             getDataRepositories(sorted)
+        }
+
+        binding.searchRepositories.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_searchGithubFragment)
         }
 
         return binding.root

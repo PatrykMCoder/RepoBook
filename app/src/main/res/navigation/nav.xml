@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_mainFragment_to_bitbucketRepositoryDetailsFragment"
             app:destination="@id/bitbucketRepositoryDetailsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_searchGithubFragment"
+            app:destination="@id/searchGithubFragment" />
     </fragment>
     <fragment
         android:id="@+id/githubRepositoryDetailsFragment"
@@ -34,5 +37,17 @@
         <argument
             android:name="bitbuckerValue"
             app:argType="com.pmprogramms.repobook.model.Bitbucket$Value" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchGithubFragment"
+        android:name="com.pmprogramms.repobook.view.GithubSearchFragment"
+        android:label="fragment_search_github"
+        tools:layout="@layout/fragment_search_github" >
+        <action
+            android:id="@+id/action_searchGithubFragment_to_githubRepositoryDetailsFragment"
+            app:destination="@id/githubRepositoryDetailsFragment" />
+        <argument
+            android:name="github"
+            app:argType="com.pmprogramms.repobook.model.Github" />
     </fragment>
 </navigation>

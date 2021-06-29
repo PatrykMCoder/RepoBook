@@ -1,7 +1,7 @@
 package com.pmprogramms.repobook.retrofit
 
-import com.pmprogramms.repobook.model.Github
-import com.pmprogramms.repobook.model.GithubSearch
+import com.pmprogramms.repobook.model.github.Github
+import com.pmprogramms.repobook.model.github.GithubSearch
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

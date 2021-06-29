@@ -1,6 +1,6 @@
 package com.pmprogramms.repobook.retrofit
 
-import com.pmprogramms.repobook.model.Bitbucket
+import com.pmprogramms.repobook.model.bitbucket.Bitbucket
 import retrofit2.Call
 import retrofit2.http.GET
 

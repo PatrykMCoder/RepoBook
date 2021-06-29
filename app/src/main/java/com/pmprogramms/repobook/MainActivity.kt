@@ -3,7 +3,7 @@ package com.pmprogramms.repobook
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.pmprogramms.repobook.helper.InternetConnectionHelper
-import com.pmprogramms.repobook.view.SomethingWrongDialog
+import com.pmprogramms.repobook.view.dialog.SomethingWrongDialog
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

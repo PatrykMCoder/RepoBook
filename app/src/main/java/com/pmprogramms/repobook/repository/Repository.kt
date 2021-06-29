@@ -2,9 +2,9 @@ package com.pmprogramms.repobook.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.pmprogramms.repobook.model.Bitbucket
-import com.pmprogramms.repobook.model.Github
-import com.pmprogramms.repobook.model.GithubSearch
+import com.pmprogramms.repobook.model.bitbucket.Bitbucket
+import com.pmprogramms.repobook.model.github.Github
+import com.pmprogramms.repobook.model.github.GithubSearch
 import com.pmprogramms.repobook.retrofit.BitbucketService
 import com.pmprogramms.repobook.retrofit.GithubService
 import retrofit2.Call

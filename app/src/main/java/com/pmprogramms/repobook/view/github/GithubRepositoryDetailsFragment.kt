@@ -1,4 +1,4 @@
-package com.pmprogramms.repobook.view
+package com.pmprogramms.repobook.view.github
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.pmprogramms.repobook.R
 import com.pmprogramms.repobook.databinding.FragmentGithubRepositoryDetailsBinding
-import com.pmprogramms.repobook.model.Github
+import com.pmprogramms.repobook.model.github.Github
 
 class GithubRepositoryDetailsFragment : Fragment() {
 
@@ -26,12 +26,15 @@ class GithubRepositoryDetailsFragment : Fragment() {
         val repositoryTitleTV = binding.titleRepository
         val descriptionTV = binding.description
         val imageProfile = binding.userAvatar
+        val htmlUrlTV = binding.htmlUrl
+
         github = args.github
 
         usernameTV.text = requireContext().getString(R.string.username, github.owner.username)
         repositoryTitleTV.text =
             requireContext().getString(R.string.repository_title, github.repositoryTitle)
         descriptionTV.text = requireContext().getString(R.string.description, github.description)
+        htmlUrlTV.text = requireContext().getString(R.string.html_url, github.url)
 
         Glide.with(this)
             .load(github.owner.avatarURL)

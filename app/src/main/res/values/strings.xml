@@ -8,5 +8,6 @@
     <string name="something_wrong_message">Please check your internet connection or try again…</string>
     <string name="search">Search</string>
     <string name="count">Found: %1$s repositories</string>
+    <string name="html_url">URL: %1$s</string>
 
 </resources>

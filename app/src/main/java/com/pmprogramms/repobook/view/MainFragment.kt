@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.pmprogramms.repobook.databinding.FragmentMainBinding
+import com.pmprogramms.repobook.view.bitbucket.BitbucketFragment
+import com.pmprogramms.repobook.view.github.GithubFragment
 
 class MainFragment : Fragment() {
     override fun onCreateView(

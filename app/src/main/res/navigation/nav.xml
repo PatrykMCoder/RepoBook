@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/githubRepositoryDetailsFragment"
-        android:name="com.pmprogramms.repobook.view.GithubRepositoryDetailsFragment"
+        android:name="com.pmprogramms.repobook.view.github.GithubRepositoryDetailsFragment"
         android:label="fragment_github_repository_details"
         tools:layout="@layout/fragment_github_repository_details" >
         <argument
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/bitbucketRepositoryDetailsFragment"
-        android:name="com.pmprogramms.repobook.view.BitbucketRepositoryDetailsFragment"
+        android:name="com.pmprogramms.repobook.view.bitbucket.BitbucketRepositoryDetailsFragment"
         android:label="fragment_bitbucket_repository_details"
         tools:layout="@layout/fragment_bitbucket_repository_details" >
         <argument
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchGithubFragment"
-        android:name="com.pmprogramms.repobook.view.GithubSearchFragment"
+        android:name="com.pmprogramms.repobook.view.github.GithubSearchFragment"
         android:label="fragment_search_github"
         tools:layout="@layout/fragment_search_github" >
         <action

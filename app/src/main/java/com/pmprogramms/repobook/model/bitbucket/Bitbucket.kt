@@ -1,4 +1,4 @@
-package com.pmprogramms.repobook.model
+package com.pmprogramms.repobook.model.bitbucket
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

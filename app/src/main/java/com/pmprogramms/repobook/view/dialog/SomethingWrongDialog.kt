@@ -1,4 +1,4 @@
-package com.pmprogramms.repobook.view
+package com.pmprogramms.repobook.view.dialog
 
 import android.app.AlertDialog
 import android.app.Dialog

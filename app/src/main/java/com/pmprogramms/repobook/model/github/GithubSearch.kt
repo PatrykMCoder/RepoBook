@@ -1,6 +1,5 @@
-package com.pmprogramms.repobook.model
+package com.pmprogramms.repobook.model.github
 
-import android.content.ClipData.Item
 import com.google.gson.annotations.SerializedName
 
 class GithubSearch(

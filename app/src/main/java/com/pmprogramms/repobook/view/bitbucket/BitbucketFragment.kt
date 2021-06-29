@@ -1,4 +1,4 @@
-package com.pmprogramms.repobook.view
+package com.pmprogramms.repobook.view.bitbucket
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.pmprogramms.repobook.adapters.BitbucketRecyclerAdapter
+import com.pmprogramms.repobook.adapters.bitbucket.BitbucketRecyclerAdapter
 import com.pmprogramms.repobook.databinding.FragmentBitbucketBinding
+import com.pmprogramms.repobook.view.dialog.SomethingWrongDialog
 import com.pmprogramms.repobook.viewmodel.RepositoriesViewModel
 
 class BitbucketFragment : Fragment() {

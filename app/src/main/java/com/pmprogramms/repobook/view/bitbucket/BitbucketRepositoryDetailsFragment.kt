@@ -1,4 +1,4 @@
-package com.pmprogramms.repobook.view
+package com.pmprogramms.repobook.view.bitbucket
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.pmprogramms.repobook.R
 import com.pmprogramms.repobook.databinding.FragmentBitbucketRepositoryDetailsBinding
-import com.pmprogramms.repobook.model.Bitbucket
+import com.pmprogramms.repobook.model.bitbucket.Bitbucket
 
 class BitbucketRepositoryDetailsFragment : Fragment() {
     private val args by navArgs<BitbucketRepositoryDetailsFragmentArgs>()

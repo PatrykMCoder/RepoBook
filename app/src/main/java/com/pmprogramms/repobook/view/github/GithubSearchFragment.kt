@@ -1,4 +1,4 @@
-package com.pmprogramms.repobook.view
+package com.pmprogramms.repobook.view.github
 
 import android.os.Bundle
 import android.view.KeyEvent
@@ -9,8 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pmprogramms.repobook.R
-import com.pmprogramms.repobook.adapters.GithubRecyclerAdapter
-import com.pmprogramms.repobook.adapters.GithubSearchRecyclerAdapter
+import com.pmprogramms.repobook.adapters.github.GithubSearchRecyclerAdapter
 import com.pmprogramms.repobook.databinding.FragmentSearchGithubBinding
 import com.pmprogramms.repobook.viewmodel.RepositoriesViewModel
 

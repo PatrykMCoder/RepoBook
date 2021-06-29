@@ -1,4 +1,4 @@
-package com.pmprogramms.repobook.view
+package com.pmprogramms.repobook.view.github
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,8 +11,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pmprogramms.repobook.R
-import com.pmprogramms.repobook.adapters.GithubRecyclerAdapter
+import com.pmprogramms.repobook.adapters.github.GithubRecyclerAdapter
 import com.pmprogramms.repobook.databinding.FragmentGithubBinding
+import com.pmprogramms.repobook.view.dialog.SomethingWrongDialog
 import com.pmprogramms.repobook.viewmodel.RepositoriesViewModel
 
 class GithubFragment : Fragment() {

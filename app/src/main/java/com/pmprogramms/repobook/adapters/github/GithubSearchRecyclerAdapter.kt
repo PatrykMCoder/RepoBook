@@ -1,4 +1,4 @@
-package com.pmprogramms.repobook.adapters
+package com.pmprogramms.repobook.adapters.github
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +10,10 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pmprogramms.repobook.R
-import com.pmprogramms.repobook.model.Github
-import com.pmprogramms.repobook.view.MainFragmentDirections
+import com.pmprogramms.repobook.model.github.Github
+import com.pmprogramms.repobook.view.GithubSearchFragmentDirections
 
-class GithubRecyclerAdapter : RecyclerView.Adapter<GithubRecyclerAdapter.ViewHolder>() {
+class GithubSearchRecyclerAdapter : RecyclerView.Adapter<GithubSearchRecyclerAdapter.ViewHolder>() {
     private lateinit var listGHRepository: List<Github>
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,7 +39,7 @@ class GithubRecyclerAdapter : RecyclerView.Adapter<GithubRecyclerAdapter.ViewHol
         holder.username.text =
             holder.itemView.context.getString(R.string.username, currentItem.owner.username)
         holder.container.setOnClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToGithubRepositoryDetailsFragment(
+            val action = GithubSearchFragmentDirections.actionSearchGithubFragmentToGithubRepositoryDetailsFragment(
                 currentItem
             )
             holder.itemView.findNavController().navigate(action)

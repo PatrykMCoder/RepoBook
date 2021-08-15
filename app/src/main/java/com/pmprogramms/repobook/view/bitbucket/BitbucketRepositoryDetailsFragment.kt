@@ -26,7 +26,7 @@ class BitbucketRepositoryDetailsFragment : Fragment() {
         val descriptionTV = binding.description
         val imageProfile = binding.userAvatar
 
-        bitbucketValue = args.bitbuckerValue
+        bitbucketValue = args.bitbucketValue
 
         usernameTV.text =
             requireContext().getString(R.string.username, bitbucketValue.owner.getName())

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class Github(
+data class Github(
     @SerializedName("name")
     var repositoryTitle: String,
     var description: String,
@@ -15,7 +15,7 @@ class Github(
 ): Parcelable {
 
     @Parcelize
-    class Owner(
+    data class Owner(
         @SerializedName("login")
         var username: String,
         @SerializedName("avatar_url")

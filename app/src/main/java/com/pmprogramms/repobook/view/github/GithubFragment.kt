@@ -46,6 +46,10 @@ class GithubFragment : Fragment() {
             findNavController().navigate(R.id.action_mainFragment_to_searchGithubFragment)
         }
 
+        binding.githubUsers.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_githubUsersFragment)
+        }
+
         return binding.root
     }
 

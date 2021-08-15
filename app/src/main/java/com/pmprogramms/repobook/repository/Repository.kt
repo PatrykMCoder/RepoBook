@@ -1,10 +1,12 @@
 package com.pmprogramms.repobook.repository
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.pmprogramms.repobook.model.bitbucket.Bitbucket
 import com.pmprogramms.repobook.model.github.Github
 import com.pmprogramms.repobook.model.github.GithubSearch
+import com.pmprogramms.repobook.model.github.GithubUsers
 import com.pmprogramms.repobook.retrofit.BitbucketService
 import com.pmprogramms.repobook.retrofit.GithubService
 import retrofit2.Call
@@ -17,7 +19,7 @@ import java.util.stream.Collectors
 import java.util.stream.Stream
 
 class Repository {
-    private val GITHUB_URL = "https://api.github.com"
+    private val GITHUB_URL = "https://api.github.com/"
     private val BITBUCKET_URL = "https://api.bitbucket.org/"
 
     private var githubService: GithubService = Retrofit.Builder()
@@ -35,8 +37,9 @@ class Repository {
     private lateinit var allGithubRepositories: MutableLiveData<List<Github>>
     private lateinit var allBitbucketRepositories: MutableLiveData<Bitbucket>
     private lateinit var searchedGithubRepository: MutableLiveData<GithubSearch>
+    private lateinit var usersGithub: MutableLiveData<List<GithubUsers>>
 
-    fun getAllGithubRepositories(sorted: Boolean): MutableLiveData<List<Github>> {
+    fun getAllGithubRepositories(sorted: Boolean): LiveData<List<Github>> {
         allGithubRepositories = MutableLiveData()
 
         githubService.getAllGithubRepositories().enqueue(object : Callback<List<Github>> {
@@ -63,29 +66,33 @@ class Repository {
         return allGithubRepositories
     }
 
-    fun getGithubRepositoriesSearch(searchKey: String): MutableLiveData<GithubSearch> {
+    fun getGithubRepositoriesSearch(searchKey: String): LiveData<GithubSearch> {
         searchedGithubRepository = MutableLiveData()
 
-        githubService.getGithubRepositoriesSearch(searchKey).enqueue(object : Callback<GithubSearch>{
-            override fun onResponse(call: Call<GithubSearch>, response: Response<GithubSearch>) {
-                Log.d("SearchGithubFragment", "onResponse: $response")
-                if(response.isSuccessful) {
-                    searchedGithubRepository.postValue(response.body())
-                } else
+        githubService.getGithubRepositoriesSearch(searchKey)
+            .enqueue(object : Callback<GithubSearch> {
+                override fun onResponse(
+                    call: Call<GithubSearch>,
+                    response: Response<GithubSearch>
+                ) {
+                    Log.d("SearchGithubFragment", "onResponse: $response")
+                    if (response.isSuccessful) {
+                        searchedGithubRepository.postValue(response.body())
+                    } else
+                        searchedGithubRepository.postValue(null)
+                }
+
+                override fun onFailure(call: Call<GithubSearch>, t: Throwable) {
+                    Log.d("SearchGithubFragment", "onFailure: ${t.message}")
                     searchedGithubRepository.postValue(null)
-            }
+                }
 
-            override fun onFailure(call: Call<GithubSearch>, t: Throwable) {
-                Log.d("SearchGithubFragment", "onFailure: ${t.message}")
-                searchedGithubRepository.postValue(null)
-            }
-
-        })
+            })
 
         return searchedGithubRepository
     }
 
-    fun getAllBitbucketRepositories(sorted: Boolean): MutableLiveData<Bitbucket> {
+    fun getAllBitbucketRepositories(sorted: Boolean): LiveData<Bitbucket> {
         allBitbucketRepositories = MutableLiveData()
 
         bitbucketService.getAllBitbucketRepositories().enqueue(object : Callback<Bitbucket> {
@@ -113,5 +120,26 @@ class Repository {
         })
 
         return allBitbucketRepositories
+    }
+
+    fun getAllGithubUsers(): LiveData<List<GithubUsers>> {
+        usersGithub = MutableLiveData()
+        githubService.getAllGithubUser().enqueue(object : Callback<List<GithubUsers>> {
+            override fun onResponse(
+                call: Call<List<GithubUsers>>,
+                response: Response<List<GithubUsers>>
+            ) {
+                if(response.isSuccessful) {
+                    usersGithub.postValue(response.body())
+                } else {
+                    usersGithub.postValue(null)
+                }
+            }
+
+            override fun onFailure(call: Call<List<GithubUsers>>, t: Throwable) {
+                usersGithub.postValue(null)
+            }
+        })
+        return usersGithub;
     }
 }

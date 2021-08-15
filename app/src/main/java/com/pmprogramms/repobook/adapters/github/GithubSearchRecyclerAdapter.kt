@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pmprogramms.repobook.R
 import com.pmprogramms.repobook.model.github.Github
-import com.pmprogramms.repobook.view.GithubSearchFragmentDirections
+import com.pmprogramms.repobook.view.github.GithubSearchFragmentDirections
 
 class GithubSearchRecyclerAdapter : RecyclerView.Adapter<GithubSearchRecyclerAdapter.ViewHolder>() {
     private lateinit var listGHRepository: List<Github>

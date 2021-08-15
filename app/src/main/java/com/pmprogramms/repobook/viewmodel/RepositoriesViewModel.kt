@@ -22,6 +22,8 @@ class RepositoriesViewModel(application: Application) : AndroidViewModel(applica
     }
 
     fun getAllBitbucketRepositories(sorted: Boolean): LiveData<Bitbucket> {
+        if (sorted)
+            return repository.getAllBitbucketRepositories(sorted).value
         return repository.getAllBitbucketRepositories(sorted)
     }
 

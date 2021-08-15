@@ -13,7 +13,7 @@ import com.pmprogramms.repobook.R
 import com.pmprogramms.repobook.model.bitbucket.Bitbucket
 import com.pmprogramms.repobook.view.MainFragmentDirections
 
-class BitbucketRecyclerAdapter : RecyclerView.Adapter<BitbucketRecyclerAdapter.ViewHolder>() {
+class BitbucketRecyclerAdapter(private val bitbucketRepository: Bitbucket) : RecyclerView.Adapter<BitbucketRecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameRepository: TextView = itemView.findViewById(R.id.title_repository)
@@ -21,8 +21,6 @@ class BitbucketRecyclerAdapter : RecyclerView.Adapter<BitbucketRecyclerAdapter.V
         val container: ConstraintLayout = itemView.findViewById(R.id.container)
         val imageProfile: ImageView = itemView.findViewById(R.id.user_avatar)
     }
-
-    private lateinit var bitbucketRepository: Bitbucket
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -51,9 +49,5 @@ class BitbucketRecyclerAdapter : RecyclerView.Adapter<BitbucketRecyclerAdapter.V
 
     override fun getItemCount(): Int {
         return bitbucketRepository.values.size
-    }
-
-    fun setData(bitbucket: Bitbucket) {
-        this.bitbucketRepository = bitbucket
     }
 }

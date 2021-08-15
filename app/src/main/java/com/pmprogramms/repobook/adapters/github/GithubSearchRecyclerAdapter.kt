@@ -13,9 +13,7 @@ import com.pmprogramms.repobook.R
 import com.pmprogramms.repobook.model.github.Github
 import com.pmprogramms.repobook.view.github.GithubSearchFragmentDirections
 
-class GithubSearchRecyclerAdapter : RecyclerView.Adapter<GithubSearchRecyclerAdapter.ViewHolder>() {
-    private lateinit var listGHRepository: List<Github>
-
+class GithubSearchRecyclerAdapter(private val listGHRepository: List<Github>) : RecyclerView.Adapter<GithubSearchRecyclerAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameRepository: TextView = itemView.findViewById(R.id.title_repository)
         val username: TextView = itemView.findViewById(R.id.username)
@@ -39,9 +37,10 @@ class GithubSearchRecyclerAdapter : RecyclerView.Adapter<GithubSearchRecyclerAda
         holder.username.text =
             holder.itemView.context.getString(R.string.username, currentItem.owner.username)
         holder.container.setOnClickListener {
-            val action = GithubSearchFragmentDirections.actionSearchGithubFragmentToGithubRepositoryDetailsFragment(
-                currentItem
-            )
+            val action =
+                GithubSearchFragmentDirections.actionSearchGithubFragmentToGithubRepositoryDetailsFragment(
+                    currentItem
+                )
             holder.itemView.findNavController().navigate(action)
         }
 
@@ -54,9 +53,5 @@ class GithubSearchRecyclerAdapter : RecyclerView.Adapter<GithubSearchRecyclerAda
 
     override fun getItemCount(): Int {
         return listGHRepository.size
-    }
-
-    fun setData(listGHRepository: List<Github>) {
-        this.listGHRepository = listGHRepository
     }
 }

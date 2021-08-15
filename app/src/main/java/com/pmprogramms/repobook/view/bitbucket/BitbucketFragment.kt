@@ -15,22 +15,17 @@ import com.pmprogramms.repobook.view.dialog.SomethingWrongDialog
 import com.pmprogramms.repobook.viewmodel.RepositoriesViewModel
 
 class BitbucketFragment : Fragment() {
-    private var recyclerView: RecyclerView? = null
-    private var recyclerAdapter: BitbucketRecyclerAdapter? = null
-    private var viewModel: RepositoriesViewModel? = null
+    private lateinit var viewModel: RepositoriesViewModel
     private var sorted = false
+    private lateinit var binding: FragmentBitbucketBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentBitbucketBinding.inflate(layoutInflater)
-        recyclerView = binding.recyclerView
-        recyclerAdapter = BitbucketRecyclerAdapter()
+        binding = FragmentBitbucketBinding.inflate(layoutInflater)
 
         viewModel = ViewModelProvider(this).get(RepositoriesViewModel::class.java)
-
-        recyclerView!!.layoutManager = LinearLayoutManager(requireContext())
 
         getDataRepositories(sorted)
 
@@ -45,10 +40,13 @@ class BitbucketFragment : Fragment() {
     }
 
     private fun getDataRepositories(sorted: Boolean) {
-        viewModel!!.getAllBitbucketRepositories(sorted).observe(viewLifecycleOwner, {
+        viewModel.getAllBitbucketRepositories(sorted).observe(viewLifecycleOwner, {
             if (it != null) {
-                recyclerAdapter?.setData(it)
-                recyclerView?.adapter = recyclerAdapter
+                binding.recyclerView.apply {
+                    setHasFixedSize(true)
+                    adapter = BitbucketRecyclerAdapter(it)
+                    layoutManager = LinearLayoutManager(requireContext())
+                }
             } else {
                 val somethingWrongDialog = SomethingWrongDialog()
                 somethingWrongDialog.show(childFragmentManager, "SomethingWrong")

@@ -14,18 +14,12 @@ import com.pmprogramms.repobook.databinding.FragmentSearchGithubBinding
 import com.pmprogramms.repobook.viewmodel.RepositoriesViewModel
 
 class GithubSearchFragment : Fragment() {
-
+    private lateinit var viewModel: RepositoriesViewModel
+    private lateinit var binding: FragmentSearchGithubBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentSearchGithubBinding.inflate(layoutInflater)
-        val viewModel = ViewModelProvider(this).get(RepositoriesViewModel::class.java)
-        val recyclerView = binding.recyclerView
-        val recyclerAdapter = GithubSearchRecyclerAdapter()
-
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
         binding.searchText.setOnKeyListener(object : View.OnKeyListener {
             override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
                 if ((event?.action == KeyEvent.ACTION_DOWN) &&
@@ -36,9 +30,11 @@ class GithubSearchFragment : Fragment() {
                             if (it != null) {
                                 binding.countSearchedText.text =
                                     requireContext().getString(R.string.count, it.count.toString())
-
-                                recyclerAdapter.setData(it.items)
-                                recyclerView.adapter = recyclerAdapter
+                                binding.recyclerView.apply {
+                                    setHasFixedSize(true)
+                                    adapter = GithubSearchRecyclerAdapter(it.items)
+                                    layoutManager = LinearLayoutManager(requireContext())
+                                }
                             }
                         })
                     return true

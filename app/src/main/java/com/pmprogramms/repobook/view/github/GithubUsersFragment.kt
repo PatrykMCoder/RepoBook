@@ -21,13 +21,12 @@ class GithubUsersFragment : Fragment() {
         val binding = FragmentGithubUsersBinding.inflate(layoutInflater)
         val viewModel = ViewModelProvider(this).get(RepositoriesViewModel::class.java)
 
-        viewModel.getAllUsersGithub().observe(viewLifecycleOwner,  { users ->
-            if (users != null)
-                binding.usersRecyclerView.apply {
-                    setHasFixedSize(true)
-                    layoutManager = LinearLayoutManager(requireContext())
-                    adapter = GithubUsersRecyclerAdapter(users)
-                }
+        viewModel.getAllUsersGithub().observe(viewLifecycleOwner, { users ->
+            binding.usersRecyclerView.apply {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = GithubUsersRecyclerAdapter(users)
+            }
         })
 
         return binding.root

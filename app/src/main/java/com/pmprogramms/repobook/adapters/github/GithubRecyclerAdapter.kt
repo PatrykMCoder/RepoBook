@@ -13,8 +13,7 @@ import com.pmprogramms.repobook.R
 import com.pmprogramms.repobook.model.github.Github
 import com.pmprogramms.repobook.view.MainFragmentDirections
 
-class GithubRecyclerAdapter : RecyclerView.Adapter<GithubRecyclerAdapter.ViewHolder>() {
-    private lateinit var listGHRepository: List<Github>
+class GithubRecyclerAdapter(private val listGHRepository: List<Github>) : RecyclerView.Adapter<GithubRecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameRepository: TextView = itemView.findViewById(R.id.title_repository)
@@ -54,9 +53,5 @@ class GithubRecyclerAdapter : RecyclerView.Adapter<GithubRecyclerAdapter.ViewHol
 
     override fun getItemCount(): Int {
         return listGHRepository.size
-    }
-
-    fun setData(listGHRepository: List<Github>) {
-        this.listGHRepository = listGHRepository
     }
 }
